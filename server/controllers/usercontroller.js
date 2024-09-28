@@ -1,6 +1,9 @@
 const show = require ('../db/models/users')
-const { successfunction, errorfunction } = require('../util/responseHandler')
+const { successfunction, errorfunction } = require('../util/responsehandler')
 const fileUpload = require('../util/file-upload').fileUpload;
+
+const language =require('../db/models/language');
+const categories = require('../db/models/categories');
 
 exports.createbooks = async function (req,res){
     try {
@@ -9,6 +12,26 @@ exports.createbooks = async function (req,res){
 
         let image = req.body.image;
         console.log('image',image);
+
+
+        let category =body.categories;
+        console.log('category',category);
+
+        let languages = body.language;
+        console.log('languages',languages);
+
+        let match = await categories.findOne({category : categories})
+        console.log('match',match);
+
+        let language_match = await language.findOne({languages : language});
+        console.log('language_match',language_match);
+
+        let language_id = language_match._id;
+
+        let category_id = match._id;
+
+        body.language= language_id
+        body.categories=category_id
 
         let view= await show.create(body);
         console.log('view',view);
@@ -92,7 +115,10 @@ exports.edit = async function(req,res){
         let body = req.body;
         console.log('body',body);
 
-    
+    // let data ={
+    //     title : body.title,
+
+    // }
 
         let id = req.params.id;
 

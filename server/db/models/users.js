@@ -6,8 +6,7 @@ const show = new mongoose.Schema({
         type : String
     },
     rating :{
-        type :  mongoose.Schema.Types.ObjectId,
-        ref: "rating"
+        type :  Number
     },
     language :{
         type : mongoose.Schema.Types.ObjectId,
