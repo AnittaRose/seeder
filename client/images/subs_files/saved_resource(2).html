@@ -1,0 +1,43 @@
+
+<!-- saved from url=(0012)about:srcdoc -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      img {
+        position: absolute;
+        object-fit: fill;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="js-promotion-banner" loading="lazy" onclick="handleBannerClick(event)" src="https://assets-in.bmscdn.com/promotions/cms/creatives/1727244471791_sunburngoaannouncementweb.jpg" alt="promotion-banner">
+    <script>
+      function handleBannerClick(event) {
+        event.preventDefault();
+        if ("https://in.bookmyshow.com/events/sunburn-goa-2024/ET00405019") {
+          let xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://adtech-events.bookmyshow.com/adevent/v2/click?reqid=a3fbd09f-f762-4b7d-bd7c-b256cf261496");
+          xhr.send();
+		  if('prod_desktop_hp_carousel_3'){
+              window.parent.BMSSDK.fireImpression("prod_desktop_hp_carousel_3")
+        	}
+          window.open("https://in.bookmyshow.com/events/sunburn-goa-2024/ET00405019");
+        }
+      }
+	  if (!'https://in.bookmyshow.com/events/sunburn-goa-2024/ET00405019') {
+        var imgId = document.getElementById("js-promotion-banner");
+        if (imgId) {
+          imgId.style.cursor = "default";
+        }
+      }
+    </script>
+  
+</body></html>

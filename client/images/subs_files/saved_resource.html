@@ -1,0 +1,43 @@
+
+<!-- saved from url=(0012)about:srcdoc -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      img {
+        position: absolute;
+        object-fit: fill;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="js-promotion-banner" loading="lazy" onclick="handleBannerClick(event)" src="https://assets-in.bmscdn.com/promotions/cms/creatives/1725875022915_webbannerlineup.jpg" alt="promotion-banner">
+    <script>
+      function handleBannerClick(event) {
+        event.preventDefault();
+        if ("https://in.bookmyshow.com/events/bandland-2024/ET00406791") {
+          let xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://adtech-events.bookmyshow.com/adevent/v2/click?reqid=5ab4624a-5331-44b2-89e6-635aa7a137c3");
+          xhr.send();
+		  if('prod_desktop_hp_carousel_5'){
+              window.parent.BMSSDK.fireImpression("prod_desktop_hp_carousel_5")
+        	}
+          window.open("https://in.bookmyshow.com/events/bandland-2024/ET00406791");
+        }
+      }
+	  if (!'https://in.bookmyshow.com/events/bandland-2024/ET00406791') {
+        var imgId = document.getElementById("js-promotion-banner");
+        if (imgId) {
+          imgId.style.cursor = "default";
+        }
+      }
+    </script>
+  
+</body></html>
