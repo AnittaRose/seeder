@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const show = new mongoose.Schema({
+const shows = new mongoose.Schema({
     title :{
         type : String
     },
@@ -25,4 +25,4 @@ const show = new mongoose.Schema({
 
 })
 
-module.exports =mongoose.model("show",show);
+module.exports =mongoose.model("shows",shows);

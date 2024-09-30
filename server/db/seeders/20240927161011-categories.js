@@ -20,7 +20,17 @@ module.exports = {
           _id :"66f6e2f66db87f40ff839fc3",
           categories:"Thriller"
  
-        }
+        },
+        {
+          _id :"66f7abfa75761bd011cb46ce",
+          categories:"Mystry"
+ 
+        },
+        {
+          _id :"66f7ac2075761bd011cb46cf",
+          categories:"comedy"
+ 
+        },
       ]).then(res => {
       // Prints "1"
       console.log(res.insertedCount);
@@ -36,7 +46,9 @@ module.exports = {
           $in :[
             "66f6dc1dad148d4b97746b08",
             "66f6def46db87f40ff839fc0",
-            "66f6e2f66db87f40ff839fc3"
+            "66f6e2f66db87f40ff839fc3",
+            "66f7abfa75761bd011cb46ce",
+            "66f7ac2075761bd011cb46cf"
           ]
         }
       }).then(res => {

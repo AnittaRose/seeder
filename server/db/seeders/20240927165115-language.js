@@ -9,7 +9,19 @@ module.exports = {
         {
          _id : "66f6e43f1461503a2581f882",
          language : "Malayalam"
-        }
+        },
+        {
+          _id : "66f7ae301ab25010cf47eff4",
+          language : "English"
+         },
+         {
+          _id : "66f7ae5a1ab25010cf47eff5",
+          language : "Hindi"
+         },
+         {
+          _id : "66f7ae771ab25010cf47eff6",
+          language : "Tamil"
+         }
       ]).then(res => {
       // Prints "1"
       console.log(res.insertedCount);
@@ -23,7 +35,10 @@ module.exports = {
         {
           _id :{
             $in :[
-              "66f6e43f1461503a2581f882"
+              "66f6e43f1461503a2581f882",
+              "66f7ae301ab25010cf47eff4",
+              "66f7ae5a1ab25010cf47eff5",
+              "66f7ae771ab25010cf47eff6"
             ]
           }
         }
