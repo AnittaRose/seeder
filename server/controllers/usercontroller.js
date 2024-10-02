@@ -5,7 +5,8 @@ const fileUpload = require('../util/file-upload').fileUpload;
 const language =require('../db/models/language');
 const categories = require('../db/models/categories');
 
-exports.createbooks = async function (req,res){
+
+exports.create = async function (req,res){
     try {
         let body =req.body;
         console.log('body',body);
@@ -65,8 +66,17 @@ exports.createbooks = async function (req,res){
     }
 }
 
-exports.viewbooks = async function(req,res){
+exports.view = async function(req,res){
     try {
+
+        let categories_result = await categories.findOne({ categories : req.query.categories })
+        console.log("categories_result : ",categories_result);
+
+
+        let categories_query = 
+
+
+
         let section = await shows.find().populate('categories').populate('language')
         console.log('section',section);
 
@@ -214,115 +224,6 @@ exports.edit = async function(req,res){
 
 
   
-
-
-exports.filterdata = async function (req, res) {
-    let query = req.query;
-
-    if (query.categories && query.language) {
-        try {
-            let categories_filter = await categories.findOne({ categories: query.categories });
-            console.log("categories_filter", categories_filter);
-
-            let language_filter = await language.findOne({ language: query.language });
-            console.log('language_filter', language_filter);
-
-            let cate_id = categories_filter._id;
-            console.log("cate_id", cate_id);
-
-            let langu_id = language_filter._id;
-            console.log("langu_id", langu_id);
-
-            let match_id = await shows.find({ categories: cate_id, language: langu_id }).populate('language').populate('categories');
-            console.log("match_id", match_id);
-
-            let response = successfunction({
-                success: true,
-                statuscode: 200,
-                message: "successfully filtered by both language and categories",
-                data: match_id
-            });
-
-            res.status(response.statuscode).send(response);
-            return;
-        } catch (error) {
-            console.log("error", error);
-            let response = errorfunction({
-                success: false,
-                statuscode: 400,
-                message: "failed"
-            });
-            res.status(response.statuscode).send(response);
-            return;
-        }
-    } else if (query.categories) {
-        try {
-            let categories_filter = await categories.findOne({ categories: query.categories });
-            console.log("categories_filter", categories_filter);
-
-            let id = categories_filter._id;
-            console.log("id", id);
-
-            let categories_match = await shows.find({ categories: id }).populate('categories');
-            console.log('categories_match', categories_match);
-
-            let response = successfunction({
-                success: true,
-                statuscode: 200,
-                message: "successfully filtered categories",
-                data: categories_match
-            });
-
-            res.status(response.statuscode).send(response);
-            return;
-        } catch (error) {
-            console.log("error", error);
-            let response = errorfunction({
-                success: false,
-                statuscode: 400,
-                message: "failed"
-            });
-            res.status(response.statuscode).send(response);
-            return;
-        }
-    } else if (query.language) {
-        try {
-            let language_filter = await language.findOne({ language: query.language });
-            console.log("language_filter", language_filter);
-
-            let id = language_filter._id;
-            console.log('id', id);
-
-            let language_match = await shows.find({ language: id }).populate('language');
-            console.log("language_match", language_match);
-
-            let response = successfunction({
-                success: true,
-                statuscode: 200,
-                message: "successfully filtered language",
-                data: language_match
-            });
-
-            res.status(response.statuscode).send(response);
-            return;
-        } catch (error) {
-            console.log("error", error);
-            let response = errorfunction({
-                success: false,
-                statuscode: 400,
-                message: "failed"
-            });
-            res.status(response.statuscode).send(response);
-            return;
-        }
-    }
-};
-
-
-     
-
-
-
 
 
 

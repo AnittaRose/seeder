@@ -33,7 +33,7 @@ async function addfilms(event){
             console.log("json_data",json_data);
 
             try {
-                let response = await fetch (`/addfilms`, {
+                let response = await fetch (`/movies`, {
                     method: 'POST',
                     headers: {
                         "content-Type": "application/json"
@@ -66,7 +66,7 @@ async function addfilms(event){
 
 async function viewpage(){
     try {
-        let response = await fetch('/getfilms',{
+        let response = await fetch('/movies',{
             method: 'GET'
         });
 
@@ -117,7 +117,7 @@ async function singledata(){
     console.log('id',id);
 
     try {
-        let response = await fetch(`/single/${id}`,{
+        let response = await fetch(`/movies/${id}`,{
             method: 'GET'
         })
         console.log('response',response);
@@ -152,7 +152,7 @@ async function singledata(){
 
 async function admin(){
     try {
-        let response = await fetch('/getbooks',{
+        let response = await fetch('/movies',{
             method: 'GET'
         });
 
@@ -194,7 +194,7 @@ async function admin(){
     console.log("id :",id);
 
     try {
-        const response = await fetch(`/deletesingleData/${id}`, {
+        const response = await fetch(`/movies/${id}`, {
             method: 'DELETE',
         });
 
